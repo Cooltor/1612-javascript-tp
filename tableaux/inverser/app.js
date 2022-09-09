@@ -9,3 +9,6 @@ var cars = [
     "Tesla",
     "Polestar",
 ];
+
+// 1 - Trier le tableau en ordre alphabetique
+// 2 - Afficher le tableau en ordre alphabetique inversé.
