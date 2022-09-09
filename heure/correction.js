@@ -7,10 +7,8 @@
 // -> 15:16:33
 // -> 15:16:34
 
-
 setInterval( 
     () => { 
-        
         var date     = new Date;
         var hours    = date.getHours();
         var minutes  = date.getMinutes();
