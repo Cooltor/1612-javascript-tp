@@ -81,6 +81,9 @@ const menuTxt = `${menuTxtPrefix}
 
 const err001 = `Vous avez commis une monumental erreur.`;
 const err002 = `Vous avez annuler la commande.`;
+const err003 = `Votre choix n'est pas valide.`;
+
+const backMainMenu = `Retopur au menu principal, saisir : home`;
 
 
 // Functions Definitions
@@ -127,7 +130,69 @@ function start()
  */
 function showItems(items=[])
 {
-    console.log("Affiche les items", items);
+    let message = menuTxtPrefix+"\n";
+
+    for (const index in items) 
+    {
+        let item = items[index];
+        let indexTxt = parseInt(index) + 1;
+        let productTxt = `  ${indexTxt}: ${item.name} (${item.priceVatFree} €)\n`;
+        
+        message += productTxt;
+    }
+
+    message += `\n${backMainMenu}`;
+
+    let choice = prompt(message);
+
+    if (choice != null)
+    {
+        if (['menu','accueil','home'].includes(choice))
+        {
+            start();
+        }
+        else 
+        {
+            let choiceNum = parseInt(choice);
+
+            if (isNaN(choiceNum))
+            {
+                alert(err003);
+                showItems(items);
+            }
+            else
+            {
+                let index = choiceNum - 1;
+
+                if (items[ index ] != undefined)
+                {
+                    let qty = askQuantity(items[index]);
+
+                    console.log("Product ", qty, items[index].name);
+
+                }
+                else
+                {
+                    alert(err003);
+                    showItems(items);
+                }
+            }
+        }
+    }
+    else
+    {
+        start();
+    }
+}
+
+
+function askQuantity(product) 
+{
+    let message = `Vous avez choisi:
+-> ${product.name}
+Combien en voulez vous ?`;
+
+    return prompt(message);
 }
 
 
