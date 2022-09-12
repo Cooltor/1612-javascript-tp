@@ -1,0 +1,127 @@
+
+// Des pizzas
+// Des boissons
+// Des desserts
+
+// Prix Hors taxe
+// -> Affichage du  prix TTC
+
+// Caluler un panier
+
+// -----------------------------------------------------------------------------
+
+// Definitions de données
+// --
+// pizzas (tableau)
+// drinks (tableau)
+// desserts (tableau)
+// TVA <- 5.5
+// cart (panier)
+// offer (a partir de 50€ = un dessert offert qui vaut moins de 4€)
+
+// Les items de chacun des tableaux sont des "Objects"
+// chaque item possède les propriété:
+// -> name
+// -> priceVATFree
+
+
+// Etape 1 : Affiche le menu de selection
+// -> 1 pizzas
+// -> 2 boissons
+// -> 3 desserts
+// -> 4 panier
+
+// Etape 2 : Recup la saisie
+
+// Etape 3 : Verif de la saisie
+// -> Si OK : affiche le contenu (menu ou panier) (etape 4)
+// -> Si KO : Message d'erreur (renvois a etape 1)
+
+// Etape 4 : Affiche les items (pizzas, boissons, desserts ou panier voir etape 12)
+// Affiche :
+// -> nom
+// -> Prix TTC
+// -> Index du produit
+// -> option menu principale (saisir: home | menu | accueil)
+
+// Etape 5 : Recup la saisie
+
+// Etape 6 : Verif de la saisie
+// -> Si Number : 
+//      -> verif l'existance de l'index 
+//          -> Si OK : vers etape 7
+//          -> Si KO : Message d'erreur (renvois a etape 4 - se souvenir du choix du menu)
+// -> Si String :
+//      -> verif si == home | menu | accueil
+//          -> Si OK : renvois a etape 1
+//          -> Si KO : Message d'erreur (renvois a etape 4 - se souvenir du choix du menu)
+
+// Etape 7 : Choix quantité + affiche le produit
+
+// Etape 8 : Recup la saisie
+
+// Etape 9 : Verif de la saisie
+//  -> Si > 0 
+//      -> Confirmation :
+//          -> Si OK : Vers étape 10
+//          -> Si KO : Vers étape 7
+//  -> Si == 0 : renvois a etape 4 - se souvenir du choix du menu
+//  -> Si < 0 : vers etape 11
+
+// Etape 10 : Ajout au panier
+// -> Check si le produit est deja dans le panier
+//      -> Non : 
+//          -> On ajoute Type, Index, Quantite, Prix Unitaire HT, Sous Total HT, Sous Total TTC
+//          -> MAJ prix total du panier
+//      -> Oui : 
+//          -> MAJ Quantite, Sous Total HT, Sous Total TTC
+//          -> MAJ prix total du panier
+
+// Etape 11 : Easter Egg
+// -> Alert aux gogols -> renvois a etape 4 - se souvenir du choix du menu
+
+// Etape 12 : Affichage panier
+// -> Type, nom, Quantite, Prix Unitaire HT, Sous Total HT, Sous Total TTC
+// -> Nbr total produit
+// -> Total HT
+// -> Total TTC
+// -> Choix:
+//      -> 1 menu principal
+//      -> 2 Modification
+//      -> 3 Validation
+
+// Point 12bis :
+// -> Ajout / Suppression automation de l'offre
+
+
+
+// -----------------------------------------------------------------------------
+
+// ALERT
+// --
+// Affiche un simple message, puis le bouton "OK"
+// 
+// alert('Ceci est un message de Alert');
+
+
+// PROMPT
+// --
+// Affiche un message, un champ de saisi, puis le bouton "OK"
+// 
+// var p = prompt("Ceci est un message de Prompt");
+
+
+// CONFIRM
+// --
+// Affiche un message, puis les boutons "OK" et "Annuler"
+// 
+// var c = confirm("Ceci est un message de Alert");
+
+
+// -----------------------------------------------------------------------------
+
+
+// Contantes
+// Variables / Propriétés
+// Fonctions / Méthodes
+// algo
