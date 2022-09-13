@@ -36,6 +36,7 @@
 // Etape 3 : Verif de la saisie
 // -> Si OK : affiche le contenu (menu ou panier) (etape 4)
 // -> Si KO : Message d'erreur (renvois a etape 1)
+// -> Annuler : renvois a etape 1
 
 // Etape 4 : Affiche les items (pizzas, boissons, desserts ou panier voir etape 12)
 // Affiche :
