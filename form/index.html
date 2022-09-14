@@ -32,26 +32,77 @@
                 </header>
 
                 <div class="page-content">
-                    <form>
+                    <form method="post" novalidate>
 
-                        <!--
-                        Création d'un formulaire de création de compte client
-                        -->
-                    
                         <!-- prénom -->
+                        <div class="mb-3">
+                            <label for="firstname">First Name</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname" required>
+                        </div>
                     
                         <!-- nom -->
+                        <div class="mb-3">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" class="form-control" id="lastname" name="lastname" required>
+                        </div>
                     
                         <!-- email -->
+                        <div class="mb-3">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
                     
                         <!-- mot de passe -->
+                        <div class="mb-3">
+                            <label for="password">Your new password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
                     
                         <!-- confirmation du mot de passe -->
+                        <div class="mb-3">
+                            <label for="confirm_password">Confirm your password</label>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                        </div>
                     
                         <!-- date de naissance -->
+                        <div class="mb-3">
+                            <label for="birthday-day">Birthday</label>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <select name="birthday[day]" id="birthday-day" class="form-control" required>
+                                        <option>Day</option>
+                                        <!-- de 1 à 31 -->
+                                    </select>
+                                </div>
+
+                                <div class="col-4">
+                                    <select name="birthday[month]" id="birthday-month" class="form-control" required>
+                                        <option>Month</option>
+                                        <!-- de 1 à 12 et de janvier à decembre -->
+                                    </select>
+                                </div>
+
+                                <div class="col-4">
+                                    <select name="birthday[year]" id="birthday-year" class="form-control" required>
+                                        <option>Year</option>
+                                        <!-- 2022 à 1922 -->
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
                     
                         <!-- Acceptation des C.G.U. -->
-                        
+                        <div class="mb-3">
+                            <label>
+                                <input type="checkbox" name="agreeTerms" class="form-check-input" required>
+                                Lorem ipsum dolor sit amet.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Register me</button>
+
                     </form>
                 </div>
                 
