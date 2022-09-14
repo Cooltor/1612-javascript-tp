@@ -9,7 +9,7 @@ const cars = [
         isNew: false,
     },
     {
-        brand: "Ford",
+        // brand: "Ford",
         model: "F-350",
         motor: "gas",
         isNew: false,
@@ -105,6 +105,7 @@ let nodeTableBody = document.createElement('TBODY');
 
 for (const car of cars)
 {
+    console.log(car);
     let brand = car.brand;
     let model = car.model;
     let motor = car.motor;
