@@ -71,22 +71,30 @@
                             <div class="row">
                                 <div class="col-4">
                                     <select name="birthday[day]" id="birthday-day" class="form-control" required>
-                                        <option>Day</option>
+                                        <option disabled selected>Day</option>
                                         <!-- de 1 à 31 -->
                                     </select>
                                 </div>
 
                                 <div class="col-4">
                                     <select name="birthday[month]" id="birthday-month" class="form-control" required>
-                                        <option>Month</option>
+                                        <option disabled selected>Month</option>
                                         <!-- de 1 à 12 et de janvier à decembre -->
+                                        <!--
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                        -->
                                     </select>
                                 </div>
 
                                 <div class="col-4">
                                     <select name="birthday[year]" id="birthday-year" class="form-control" required>
-                                        <option>Year</option>
+                                        <option disabled selected>Year</option>
                                         <!-- 2022 à 1922 -->
+                                        <!--
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                        -->
                                     </select>
                                 </div>
                             </div>
@@ -116,6 +124,7 @@
     </footer>
 
     <!-- Script de controle du formulaire -->
+    <script src="./assets/scripts/main.js"></script>
 
 </body>
 </html>
