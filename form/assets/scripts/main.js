@@ -99,9 +99,6 @@ for (let node of requiredNodes)
     const nodeName = node.nodeName;
     const nodeType = node.getAttribute('type');
 
-    // console.log(nodeName, nodeType);
-
-
     // For all INPUT
     if (nodeName == "INPUT")
     {
@@ -140,7 +137,8 @@ for (let node of requiredNodes)
     else if (nodeName == "SELECT")
     {
         // let label = node.parentNode.parentNode.parentNode.querySelector("label")
-        let label = getParent(node, 3).querySelector("label");
+
+        let label = getParentNode(node, 3).querySelector("label");
 
         label.classList.add('required');
     }
@@ -155,34 +153,94 @@ for (let node of requiredNodes)
 // Catch the form submit
 // --
 
-// Retrieve form data
-// --
+// Get the <form> tag
+const form = document.forms[0];
 
-// Validate form data + Add error message
-// --
+// catch the form submit event
+form.addEventListener('submit', event => {
 
-// Check Firstname
-// Obligatoire + Doit être une chaine de caractères (min, maj, -)
+    // Consider the form has NO ERROR
+    let hasError = false;
 
-// Check Lastname
-// Obligatoire + Doit être une chaine de caractères (min, maj, -)
+    // reset alle errors
+    let error_messages = document.getElementsByClassName('invalid-feedback');
 
-// Check Email
-// Obligatoire + Doit correspondre à la syntaxe chaine@chaine.chaine (min, maj, nombre, - .)
+    for (let msg of error_messages)
+    {
+        msg.remove();
+    }
 
-// Check Password
-// Obligatoire + Doit avoir min. 6 caractères, max. 16 caractères, 
-// au moins une minuscule,
-// au moins une majuscule, 
-// au moins un nombre,
-// au moins un caractère spéciale (+=!?&-_%$€£@*|),
 
-// Check Confirm Password
-// Doit être identique au "password"
 
-// Check Birthday
-// Obligatoire + Date valide... dans le passé
-// Age > 13 ans
+    // Retrieve form nodes
+    // --
 
-// Check Terms
-// Obligatoire
+    let node_firstname = form.firstname;
+    let node_lastname = form.lastname;
+
+
+
+    // Retrieve form data
+    // --
+
+    let firstname = node_firstname.value;
+    let lastname = node_lastname.value;
+
+
+
+    // Validate form data + Add error message
+    // --
+
+    // Check Firstname
+    // Obligatoire + Doit être une chaine de caractères (min, maj, -)
+    if ( firstname.length <= 0 )
+    {
+        setErrorMessage(node_firstname, "Firstname is required");
+        hasError = true;
+    }
+    else if ( !firstname.match(/^[a-z]+$/i) )
+    {
+        // Injection d'un message d'erreur sous le input#firstname
+        setErrorMessage(node_firstname, "Firstname is not valid");
+        hasError = true;
+    }
+
+
+    // Check Lastname
+    // Obligatoire + Doit être une chaine de caractères (min, maj, -)
+
+    // Check Email
+    // Obligatoire + Doit correspondre à la syntaxe chaine@chaine.chaine (min, maj, nombre, - .)
+
+    // Check Password
+    // Obligatoire + Doit avoir min. 6 caractères, max. 16 caractères, 
+    // au moins une minuscule,
+    // au moins une majuscule, 
+    // au moins un nombre,
+    // au moins un caractère spéciale (+=!?&-_%$€£@*|),
+
+    // Check Confirm Password
+    // Doit être identique au "password"
+
+    // Check Birthday
+    // Obligatoire + Date valide... dans le passé
+    // Age > 13 ans
+
+    // Check Terms
+    // Obligatoire
+
+    
+
+
+
+    if (hasError)
+    {
+        event.preventDefault();
+    }
+    else 
+    {
+        console.log( "SOUMISSION DU FORM" );
+        event.preventDefault();
+    }
+})
+

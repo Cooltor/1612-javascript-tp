@@ -21,7 +21,7 @@ function upperCaseFirst( string )
  * @param Number level - Number of parent
  * @returns Object
  */
-function getParent(node, level)
+function getParentNode(node, level)
 {
     for (let i = 0; i<level; i++)
     {
@@ -29,4 +29,19 @@ function getParent(node, level)
     }
 
     return node;
+}
+
+
+/**
+ * Set an error message to the DOM
+ * @param Object input node
+ * @param string message - error message
+ */
+function setErrorMessage(input, message)
+{
+    let errNode = document.createElement('DIV');
+        errNode.classList.add('invalid-feedback');
+        errNode.innerHTML = message;
+
+    input.parentNode.append(errNode);
 }

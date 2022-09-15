@@ -5,3 +5,8 @@ label.required::after
     font-size: .9rem;
     padding-left: 4px;
 }
+
+
+.invalid-feedback {
+    display: block;
+}
