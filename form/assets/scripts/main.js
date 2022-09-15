@@ -162,15 +162,22 @@ form.addEventListener('submit', event => {
     // Consider the form has NO ERROR
     let hasError = false;
 
-    // reset alle errors
-    let error_messages = document.getElementsByClassName('invalid-feedback');
 
-    for (let msg of error_messages)
+    // #region reset-error
+
+    // reset all errors
+    let messages = form.getElementsByClassName('invalid-feedback');
+
+    for (let message of messages)
     {
-        msg.remove();
+        message.remove();
     }
 
+    // #endregion reset-error
 
+
+
+    // #region input-node
 
     // Retrieve form nodes
     // --
@@ -178,7 +185,11 @@ form.addEventListener('submit', event => {
     let node_firstname = form.firstname;
     let node_lastname = form.lastname;
 
+    // #endregion input-node
 
+
+
+    // #region input-value
 
     // Retrieve form data
     // --
@@ -186,10 +197,15 @@ form.addEventListener('submit', event => {
     let firstname = node_firstname.value;
     let lastname = node_lastname.value;
 
+    // #endregion input-node
+
 
 
     // Validate form data + Add error message
     // --
+
+
+    // #region validate-firstname
 
     // Check Firstname
     // Obligatoire + Doit être une chaine de caractères (min, maj, -)
@@ -205,6 +221,11 @@ form.addEventListener('submit', event => {
         hasError = true;
     }
 
+    // #endregion validate-firstname
+
+
+
+    // #region other-fields
 
     // Check Lastname
     // Obligatoire + Doit être une chaine de caractères (min, maj, -)
@@ -230,8 +251,11 @@ form.addEventListener('submit', event => {
     // Obligatoire
 
     
+    // #endregion other-fields
 
 
+
+    // #region sending-form
 
     if (hasError)
     {
@@ -242,5 +266,8 @@ form.addEventListener('submit', event => {
         console.log( "SOUMISSION DU FORM" );
         event.preventDefault();
     }
+
+    // #endregion sending-form
+
 })
 
