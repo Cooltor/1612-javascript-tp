@@ -166,7 +166,7 @@ form.addEventListener('submit', event => {
     // #region reset-error
 
     // reset all errors
-    let messages = form.getElementsByClassName('invalid-feedback');
+    let messages = form.querySelectorAll('.invalid-feedback');
 
     for (let message of messages)
     {
@@ -229,6 +229,17 @@ form.addEventListener('submit', event => {
 
     // Check Lastname
     // Obligatoire + Doit être une chaine de caractères (min, maj, -)
+    if ( lastname.length <= 0 )
+    {
+        setErrorMessage(node_lastname, "lastname is required");
+        hasError = true;
+    }
+    else if ( !lastname.match(/^[a-z]+$/i) )
+    {
+        // Injection d'un message d'erreur sous le input#firstname
+        setErrorMessage(node_lastname, "lastname is not valid");
+        hasError = true;
+    }
 
     // Check Email
     // Obligatoire + Doit correspondre à la syntaxe chaine@chaine.chaine (min, maj, nombre, - .)
@@ -270,4 +281,3 @@ form.addEventListener('submit', event => {
     // #endregion sending-form
 
 })
-
