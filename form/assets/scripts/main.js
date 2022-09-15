@@ -89,6 +89,63 @@ for (let i=current_year; i>=min_year; i--)
 // Add "required" symbol to <label>
 // -------------------------
 
+// Get all required input
+// --
+const requiredNodes = document.querySelectorAll('[required]');
+
+// Loop on each node of the NodeList
+for (let node of requiredNodes)
+{
+    const nodeName = node.nodeName;
+    const nodeType = node.getAttribute('type');
+
+    // console.log(nodeName, nodeType);
+
+
+    // For all INPUT
+    if (nodeName == "INPUT")
+    {
+        // For all <input type="checkbox">
+        if (nodeType == "checkbox")
+        {
+            // Get the parent of the node
+            // retrieve the <label> form the <input required>
+            let parent = node.parentNode;
+
+            // Get the <label> form the parent node
+            let label = parent;
+
+            // Add the class required to the <label>
+            label.classList.add('required');
+        }
+
+        // For all other <input>
+        else 
+        {
+            // Get the parent of the node
+            // retrieve the <.mb-3> form the <input required>
+            let parent = node.parentNode;
+        
+            // Get the <label> form the parent node
+            // retrieve the <label> in the <.mb-3>
+            let label = parent.querySelector("label");
+        
+            // Add the class required to the <label>
+            // "label?" : SI label != null, on execute la suite de la ligne de code
+            label?.classList.add('required');
+        }
+    }
+
+    // For all SELECT
+    else if (nodeName == "SELECT")
+    {
+        // let label = node.parentNode.parentNode.parentNode.querySelector("label")
+        let label = getParent(node, 3).querySelector("label");
+
+        label.classList.add('required');
+    }
+}
+
 
 
 

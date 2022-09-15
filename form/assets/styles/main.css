@@ -1,0 +1,7 @@
+label.required::after
+{
+    content: "*";
+    color: red;
+    font-size: .9rem;
+    padding-left: 4px;
+}
