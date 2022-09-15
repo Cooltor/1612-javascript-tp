@@ -44,7 +44,7 @@ const node_birthdayMonth = document.getElementsByName('birthday[month]')[0];
 for (let index in months)
 {
     let month_num = parseInt(index) + 1;
-    let month_name = months[index];
+    let month_name = upperCaseFirst(months[index]);
 
     // Create <option> tag
     const node_option = document.createElement('OPTION');
@@ -63,6 +63,27 @@ for (let index in months)
 // Generate birthday[year] <option>
 // --
 
+const date = new Date();
+const current_year = date.getFullYear();
+const min_year = current_year - 100;
+
+// Get the <select[name=birthday[year]]>
+const node_birthdayYear = document.getElementsByName('birthday[year]')[0];
+
+for (let i=current_year; i>=min_year; i--)
+{
+    // Create <option> tag
+    const node_option = document.createElement('OPTION');
+
+    // Add year between <option>
+    node_option.innerText = i;
+
+    // Add year as value of <option>
+    node_option.value = i;
+
+    // Insert <option> in <select>
+    node_birthdayYear.append(node_option);
+}
 
 
 // Add "required" symbol to <label>
