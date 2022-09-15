@@ -34,6 +34,32 @@ for (let i=1; i <= 31; i++)
 // Generate birthday[month] <option>
 // --
 
+// Define the list of months
+const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+
+// Get the <select[name=birthday[month]]>
+const node_birthdayMonth = document.getElementsByName('birthday[month]')[0];
+
+// Loop on months list
+for (let index in months)
+{
+    let month_num = parseInt(index) + 1;
+    let month_name = months[index];
+
+    // Create <option> tag
+    const node_option = document.createElement('OPTION');
+
+    // Add month name between <option>
+    node_option.innerText = month_name;
+
+    // Add month num as value of <option>
+    node_option.value = month_num;
+
+    // Insert <option> in <select>
+    node_birthdayMonth.append(node_option);
+}
+
+
 // Generate birthday[year] <option>
 // --
 
