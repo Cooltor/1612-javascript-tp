@@ -182,8 +182,15 @@ form.addEventListener('submit', event => {
     // Retrieve form nodes
     // --
 
-    let node_firstname = form.firstname;
-    let node_lastname = form.lastname;
+    let node_firstname        = form.firstname;
+    let node_lastname         = form.lastname;
+    let node_email            = form.email;
+    let node_password         = form.password;
+    let node_confirm_password = form.confirm_password;
+    let node_birthday_day     = form['birthday[day]'];
+    let node_birthday_month   = form['birthday[month]'];
+    let node_birthday_year    = form['birthday[year]'];
+    let node_agreeTerms       = form.agreeTerms;
 
     // #endregion input-node
 
@@ -194,8 +201,15 @@ form.addEventListener('submit', event => {
     // Retrieve form data
     // --
 
-    let firstname = node_firstname.value;
-    let lastname = node_lastname.value;
+    let firstname             = node_firstname.value;
+    let lastname              = node_lastname.value;
+    let email                 = node_email.value;
+    let password              = node_password.value;
+    let confirm_password      = node_confirm_password.value;
+    let birthday_day          = node_birthday_day.value;
+    let birthday_month        = node_birthday_month.value;
+    let birthday_year         = node_birthday_year.value;
+    let agreeTerms            = node_agreeTerms.checked;
 
     // #endregion input-node
 
@@ -240,6 +254,8 @@ form.addEventListener('submit', event => {
         setErrorMessage(node_lastname, "lastname is not valid");
         hasError = true;
     }
+
+
 
     // Check Email
     // Obligatoire + Doit correspondre à la syntaxe chaine@chaine.chaine (min, maj, nombre, - .)
