@@ -56,7 +56,7 @@
                         <!-- mot de passe -->
                         <div class="mb-3">
                             <label for="password">Your new password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="text" class="form-control" id="password" name="password" required>
                         </div>
                     
                         <!-- confirmation du mot de passe -->
@@ -72,14 +72,14 @@
                             <div class="row">
                                 <div class="col-4">
                                     <select name="birthday[day]" id="birthday-day" class="form-control" required>
-                                        <option disabled selected>Day</option>
+                                        <option disabled selected value="0">Day</option>
                                         <!-- de 1 à 31 -->
                                     </select>
                                 </div>
 
                                 <div class="col-4">
                                     <select name="birthday[month]" id="birthday-month" class="form-control" required>
-                                        <option disabled selected>Month</option>
+                                        <option disabled selected value="0">Month</option>
                                         <!-- de 1 à 12 et de janvier à decembre -->
                                         <!--
                                             <option value="1">January</option>
@@ -90,7 +90,7 @@
 
                                 <div class="col-4">
                                     <select name="birthday[year]" id="birthday-year" class="form-control" required>
-                                        <option disabled selected>Year</option>
+                                        <option disabled selected value="0">Year</option>
                                         <!-- 2022 à 1922 -->
                                         <!--
                                             <option value="2022">2022</option>
@@ -99,6 +99,8 @@
                                     </select>
                                 </div>
                             </div>
+
+
                             
                         </div>
                     

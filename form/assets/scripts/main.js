@@ -228,7 +228,7 @@ form.addEventListener('submit', event => {
         setErrorMessage(node_firstname, "Firstname is required");
         hasError = true;
     }
-    else if ( !firstname.match(/^[a-z]+$/i) )
+    else if ( !firstname.match(/^[a-z](([a-z-]+)?[a-z])?$/i) )
     {
         // Injection d'un message d'erreur sous le input#firstname
         setErrorMessage(node_firstname, "Firstname is not valid");
@@ -238,48 +238,157 @@ form.addEventListener('submit', event => {
     // #endregion validate-firstname
 
 
-
-    // #region other-fields
+    // #region validate-lastname
 
     // Check Lastname
     // Obligatoire + Doit être une chaine de caractères (min, maj, -)
     if ( lastname.length <= 0 )
     {
-        setErrorMessage(node_lastname, "lastname is required");
+        setErrorMessage(node_lastname, "Lastname is required");
         hasError = true;
     }
-    else if ( !lastname.match(/^[a-z]+$/i) )
+    else if ( !lastname.match(/^[a-z](([a-z-]+)?[a-z])?$/i) )
     {
         // Injection d'un message d'erreur sous le input#firstname
         setErrorMessage(node_lastname, "lastname is not valid");
         hasError = true;
     }
 
+    // #endregion validate-lastname
 
+
+    // #region validate-email
 
     // Check Email
     // Obligatoire + Doit correspondre à la syntaxe chaine@chaine.chaine (min, maj, nombre, - .)
+    if ( email.length <= 0 )
+    {
+        setErrorMessage(node_email, "Email is required");
+        hasError = true;
+    }
+    else if ( !email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/i) )
+    {
+        setErrorMessage(node_email, "Email is not valid");
+        hasError = true;
+    }
+
+    // #endregion validate-email
+
+
+    // #region validate-password
 
     // Check Password
-    // Obligatoire + Doit avoir min. 6 caractères, max. 16 caractères, 
+    // Obligatoire
+    if ( password.length <= 0 )
+    {
+        setErrorMessage(node_password, "Password is required");
+        hasError = true;
+    }
+    // else if ( !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})/) )
+    // {
+    //     setErrorMessage(node_password, "Password is not valid");
+    //     hasError = true;
+    // }
     // au moins une minuscule,
+    else if (!password.match(/(?=.*[a-z])/))
+    {
+        setErrorMessage(node_password, "Password must contain a lowercase");
+        hasError = true;
+    }
     // au moins une majuscule, 
+    else if (!password.match(/(?=.*[A-Z])/))
+    {
+        setErrorMessage(node_password, "Password must contain a uppercase");
+        hasError = true;
+    }
     // au moins un nombre,
+    else if (!password.match(/(?=.*[0-9])/))
+    {
+        setErrorMessage(node_password, "Password must contain a number");
+        hasError = true;
+    }
     // au moins un caractère spéciale (+=!?&-_%$€£@*|),
+    else if (!password.match(/(?=.*[!@#\$%\^&\*])/))
+    {
+        setErrorMessage(node_password, "Password must contain a special char");
+        hasError = true;
+    }
+    // Doit avoir min. 6 caractères
+    else if ( password.length < 8 || password.length > 16 )
+    {
+        setErrorMessage(node_password, "Password must have min. 8 chars and max 16 chars");
+        hasError = true;
+    }
 
+    // #endregion validate-password
+
+
+    // #region validate-cpassword
     // Check Confirm Password
     // Doit être identique au "password"
+    if (confirm_password != password)
+    {
+        setErrorMessage(node_confirm_password, "Confirmation password must be the same as Password");
+        hasError = true;
+    }
+    // #endregion validate-cpassword
+
+
+    // #region validate-birthday
 
     // Check Birthday
-    // Obligatoire + Date valide... dans le passé
+    let birthdayParent = getParentNode(node_birthday_day, 2);
+
+    // Obligatoire
+    if ( birthday_day == 0 || birthday_month == 0 || birthday_year == 0 )
+    {
+        setErrorMessage(birthdayParent, "Birthday is required");
+        hasError = true;
+    }
+    // Date valide... dans le passé
+    else if (!isValidDate(birthday_day, birthday_month, birthday_year))
+    {
+        setErrorMessage(birthdayParent, "Birthday is not valid");
+        hasError = true;
+    }
     // Age > 13 ans
+    else {
+        const today = new Date();
+
+        const birthday_str = `${birthday_year}-${birthday_month}-${birthday_day}`;
+        const birthday = new Date(birthday_str);
+
+        let y = today.getFullYear() - birthday.getFullYear();
+        let m = today.getMonth() - birthday.getMonth();
+        // let d = today.getDate() - birthday.getDate();
+      
+        if ( m < 0 || (m === 0 && today.getDate() < birthday.getDate()) ) {
+            y--;
+        }
+
+        if ( y < 13)
+        {
+            setErrorMessage(birthdayParent, "You are to young baby !!");
+            hasError = true;
+        }
+    }
+
+    // #endregion validate-birthday
+
+
+    // #region validate-agreetrems
 
     // Check Terms
     // Obligatoire
+    if (!agreeTerms)
+    {
+        let parent = getParentNode(node_agreeTerms, 1);
 
+        setErrorMessage(parent, "You must accept the terms of use");
+        hasError = true;
+    }
     
-    // #endregion other-fields
-
+    // #endregion validate-agreetrems
 
 
     // #region sending-form
@@ -291,7 +400,6 @@ form.addEventListener('submit', event => {
     else 
     {
         console.log( "SOUMISSION DU FORM" );
-        event.preventDefault();
     }
 
     // #endregion sending-form
