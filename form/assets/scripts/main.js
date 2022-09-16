@@ -176,7 +176,6 @@ form.addEventListener('submit', event => {
     // #endregion reset-error
 
 
-
     // #region input-node
 
     // Retrieve form nodes
@@ -193,7 +192,6 @@ form.addEventListener('submit', event => {
     let node_agreeTerms       = form.agreeTerms;
 
     // #endregion input-node
-
 
 
     // #region input-value
