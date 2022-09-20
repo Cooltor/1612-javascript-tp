@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>Pokemons</h1>
+
+        <div class="row">
+            <div class="col-6">
+
+                <div id="pokemons"></div>
+
+                <hr>
+
+                <div id="pagination"></div>
+
+                <hr>
+
+                <div>Total pokemons : <span id="count"></span></div>
+                <div>Page : <span id="current_page">0</span>/<span id="count_page">0</span></div>
+
+            </div>
+            <div class="col-6">
+
+                <div class="card">
+                    <img id="illustration" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title" id="name">name</h5>
+                        <div class="card-text">Poids : </div>
+                        <div class="card-text">ID : </div>
+                        <div class="card-text">Types :</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

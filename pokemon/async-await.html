@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+
+        "use strict";
+
+        const api_url = "https://swapi.dev/api/people/1";
+
+        console.log("aaa");
+
+        async function showLog()
+        {
+            console.log("ccc");
+            const response = await httpGet(api_url);
+            //console.log( response );
+            console.log("fff");
+            console.log( response.name );
+        }
+
+        async function httpGet(url)
+        {
+            console.log("ddd");
+            const response = await fetch(url);
+            console.log("eee");
+            //return await response;
+            return await response.json();
+        }
+
+        //window.addEventListener('load', showLog);
+        showLog()
+        setTimeout(showLog, 5000);
+    </script>
+</body>
+</html>
