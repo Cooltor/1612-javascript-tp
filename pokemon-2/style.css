@@ -1,0 +1,12 @@
+#pokemons > div {
+    margin-bottom: .5rem;
+    padding: .5rem 1rem;
+    background-color: rgb(223, 223, 223);
+    border-radius: 5px;
+    transition: all .3s;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+#pokemons > div:hover {
+    background-color: rgb(223, 244, 139);
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+
+    <!-- Integration de bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1>Pokemons</h1>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-6">
+
+                <h2>Pokemons list</h2>
+                <hr>
+
+                <!-- Liste des pokemons -->
+                <div id="pokemons"></div>
+                <hr>
+
+                <!-- Systeme de pagination -->
+                <div id="pagination"></div>
+                <hr>
+
+                <div>
+                    <b>Total pokemons</b> : <span id="count"></span>
+                </div>
+                <div>
+                    <b>Page</b> : <span id="current_page">0</span>/<span id="count_page">0</span>
+                </div>
+
+            </div>
+            <div class="col-6">
+
+                <h2>Pokemon data</h2>
+                <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
