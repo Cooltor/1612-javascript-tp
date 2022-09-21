@@ -10,3 +10,10 @@
 #pokemons > div:hover {
     background-color: rgb(223, 244, 139);
 }
+
+
+#pagination .current {
+    background-color: rgb(207, 135, 0);
+    border-color: rgb(207, 135, 0);
+    color: #FFFFFF;
+}
